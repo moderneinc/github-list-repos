@@ -29,6 +29,7 @@ public class Main {
                                     .toLocalDate())) {
                                 writer.write(ghOrigin + "," + org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + "\n");
                             }
+                            break;
                         }
                     }
                 } catch (Throwable ignored) {
