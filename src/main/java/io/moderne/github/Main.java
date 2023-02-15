@@ -24,7 +24,7 @@ public class Main {
                     for (GHRepository repo : org.getRepositories().values()) {
                         for (GHCommit listCommit : repo.listCommits()) {
                             Date lastDate = listCommit.getCommitDate();
-                            if (LocalDate.now().minusYears(2).isBefore(lastDate.toInstant()
+                            if (!repo.isArchived() && LocalDate.now().minusYears(2).isBefore(lastDate.toInstant()
                                     .atZone(ZoneId.systemDefault())
                                     .toLocalDate())) {
                                 writer.write(ghOrigin + "," + org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + "\n");
