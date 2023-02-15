@@ -22,14 +22,11 @@ public class Main {
                 GHOrganization org = orgs.next();
                 try {
                     for (GHRepository repo : org.getRepositories().values()) {
-                        for (GHCommit listCommit : repo.listCommits()) {
-                            Date lastDate = listCommit.getCommitDate();
-                            if (!repo.isArchived() && LocalDate.now().minusYears(2).isBefore(lastDate.toInstant()
-                                    .atZone(ZoneId.systemDefault())
-                                    .toLocalDate())) {
-                                writer.write(ghOrigin + "," + org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + "\n");
-                            }
-                            break;
+                        if (!repo.isArchived() && LocalDate.now().minusYears(2).isBefore(repo.getPushedAt()
+                                .toInstant()
+                                .atZone(ZoneId.systemDefault())
+                                .toLocalDate())) {
+                            writer.write(ghOrigin + "," + org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + "\n");
                         }
                     }
                 } catch (Throwable ignored) {
