@@ -4,6 +4,9 @@ import org.kohsuke.github.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -15,10 +18,21 @@ public class Main {
 
         try (FileWriter writer = new FileWriter("repos.csv")) {
             PagedIterator<GHOrganization> orgs = github.listOrganizations()._iterator(10);
-            while(orgs.hasNext()) {
+            while (orgs.hasNext()) {
                 GHOrganization org = orgs.next();
-                for (GHRepository repo : org.getRepositories().values()) {
-                    writer.write(ghOrigin + "," + org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + "\n");
+                try {
+                    for (GHRepository repo : org.getRepositories().values()) {
+                        for (GHCommit listCommit : repo.listCommits()) {
+                            Date lastDate = listCommit.getCommitDate();
+                            if (LocalDate.now().minusYears(2).isBefore(lastDate.toInstant()
+                                    .atZone(ZoneId.systemDefault())
+                                    .toLocalDate())) {
+                                writer.write(ghOrigin + "," + org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + "\n");
+                            }
+                        }
+                    }
+                } catch (Throwable ignored) {
+                    // continue to the next org
                 }
             }
         }
