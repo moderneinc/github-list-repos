@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -26,7 +25,7 @@ public class Main {
                                 .toInstant()
                                 .atZone(ZoneId.systemDefault())
                                 .toLocalDate())) {
-                            writer.write(ghOrigin + "," + org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + "\n");
+                            writer.write(org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + ",,,,,\n");
                         }
                     }
                 } catch (Throwable ignored) {
