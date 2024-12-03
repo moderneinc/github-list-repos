@@ -21,10 +21,8 @@ public class Main {
                 GHOrganization org = orgs.next();
                 try {
                     for (GHRepository repo : org.getRepositories().values()) {
-                        if (!repo.isArchived() && LocalDate.now().minusYears(2).isBefore(repo.getPushedAt()
-                                .toInstant()
-                                .atZone(ZoneId.systemDefault())
-                                .toLocalDate())) {
+                        if (!repo.isArchived() && LocalDate.now().minusYears(2).isBefore(LocalDate.ofInstant(repo.getPushedAt()
+                                .toInstant(), ZoneId.systemDefault()))) {
                             writer.write(org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + ",,,,,\n");
                         }
                     }
