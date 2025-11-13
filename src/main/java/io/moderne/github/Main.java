@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    void main(String[] args) throws IOException {
         String ghOrigin = args.length == 0 ? "github.com" : args[0];
         String ghEndpoint = args.length < 2 ? "https://api.github.com" : args[1];
         GitHub github = GitHubBuilder.fromPropertyFile()
@@ -26,7 +26,7 @@ public class Main {
                             writer.write(org.getLogin() + "/" + repo.getName() + "," + repo.getDefaultBranch() + ",,,,,\n");
                         }
                     }
-                } catch (Throwable ignored) {
+                } catch (Throwable _) {
                     // continue to the next org
                 }
             }
