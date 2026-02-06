@@ -1,0 +1,2 @@
+Source path,Class name,Signature,Checksum,Description,Return value description,Technique 1,Technique 2,Technique 3,Inference time (ms),Input tokens,Output tokens
+src/main/java/io/moderne/github/Main.java,io.moderne.github.Main,"io.moderne.github.Main{name=main,return=void,parameters=[java.lang.String[]]}",9c2b04d2192ea4be379ce604689b6e0a165ef40b8034f6729b97ab62bae24bf8,,,,,,0,519,0

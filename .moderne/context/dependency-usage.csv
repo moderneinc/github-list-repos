@@ -1,0 +1,2 @@
+Library,Top-level package,Usage pattern,Common classes,Import count,Example usage
+org.kohsuke:github-api:1.313,org.kohsuke,,"GitHubBuilder, PagedIterator, GHRepository, GitHub, GHOrganization",1,

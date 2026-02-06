@@ -39,3 +39,7 @@ out/
 gradle.properties
 
 repos.csv
+
+# Moderne CLI
+.moderne/*
+!.moderne/context/

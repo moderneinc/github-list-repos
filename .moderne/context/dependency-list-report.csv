@@ -1,0 +1,8 @@
+Build tool,Group id,Artifact id,Version,Dependency group id,Dependency artifact id,Dependency version,Direct Dependency,Resolution failure
+Gradle,,github-list-repos,unspecified,org.kohsuke,github-api,1.313,true,
+Gradle,,github-list-repos,unspecified,org.apache.commons,commons-lang3,3.9,false,
+Gradle,,github-list-repos,unspecified,com.fasterxml.jackson.core,jackson-databind,2.13.3,false,
+Gradle,,github-list-repos,unspecified,com.fasterxml.jackson.core,jackson-annotations,2.13.3,false,
+Gradle,,github-list-repos,unspecified,com.fasterxml.jackson,jackson-bom,2.13.3,false,
+Gradle,,github-list-repos,unspecified,com.fasterxml.jackson.core,jackson-core,2.13.3,false,
+Gradle,,github-list-repos,unspecified,commons-io,commons-io,2.8.0,false,
